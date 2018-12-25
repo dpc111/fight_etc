@@ -1,0 +1,6 @@
+/////////////////////////////////////////////////////
+// do not modify the file, gen by const/gen.bat
+/////////////////////////////////////////////////////
+var FIGHTCONST = {
+	//CampGroupType
+	CampGroupTypeSelf             : 1,             // 闂傚倸鍊搁崐鎼佸磹閹间礁纾归柟闂寸

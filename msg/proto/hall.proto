@@ -1,0 +1,213 @@
+///////////////////////////////////////////////////////////////////
+// 获取用户信息
+///////////////////////////////////////////////////////////////////
+message hall_get_user_info {
+	//req
+	//rep
+	optional user_info user_info;
+	repeated item items;
+	optional string stage_record;  				// "stage":[win,star,score]	
+}
+
+message hall_get_other_user_info {
+	//req
+	required int32 uid;
+	//rep
+	optional user_info user_info;
+}
+
+///////////////////////////////////////////////////////////////////
+// 获取游戏服id
+///////////////////////////////////////////////////////////////////
+message hall_get_room_server {
+	//req
+	required int32 stage;
+	//rep
+	required int32 sid; 						// 用于房间消息填写协议头sid
+}
+
+message hall_get_endless_info {
+	//req
+	//rep
+	required int32 total;						// 无尽挑战每天仅限
+	required int32 use;							// 当前消耗次数
+	required int32 remain; 						// 剩余次数
+}
+
+///////////////////////////////////////////////////////////////////
+// 竞技匹配
+///////////////////////////////////////////////////////////////////
+message hall_match_apply {
+	required int32 stage;	
+}
+
+message hall_match_cancel {
+	required int32 stage;	
+}
+
+///////////////////////////////////////////////////////////////////
+// 商城
+///////////////////////////////////////////////////////////////////
+message hall_buy_gold {
+	required int32 id;							// goods id
+}
+
+message hall_buy_item {
+	required int32 id;							// item id
+}
+
+message hall_buy_vip_pack {
+	required int32 id;							// vip pack id
+}
+
+///////////////////////////////////////////////////////////////////
+// 邮件 聊天
+///////////////////////////////////////////////////////////////////
+message hall_get_global_chat {
+	// req
+	// rep
+	repeated global_chat chats; 
+}
+
+message hall_send_global_chat {
+	required string content;
+}
+
+message hall_email_get {
+	// req
+	required int32 type;
+	// rep
+	required int32 type;
+	repeated email emails;
+}
+
+message hall_email_read {
+	required int32 type;
+	required int32 index;
+}
+
+message hall_email_get_item {
+	// req
+	required int32 type;
+	required int32 index;
+	// rep
+	required int32 type;
+	required int32 index;
+}
+
+message hall_email_del_all {
+	required int32 type;
+}
+
+message hall_email_get_item_all {
+	required int32 type;
+}
+
+message hall_email_send {
+	required int32 uid;
+	optional string content;
+	repeated item items;
+}
+
+///////////////////////////////////////////////////////////////////
+// 好友
+///////////////////////////////////////////////////////////////////
+message hall_get_friend_list {
+	// req
+	repeated string openidlist;
+	// rep
+	repeated friend infos;
+}
+
+message hall_get_match_record {
+	// req
+	// rep
+	repeated match_record infos;
+}
+
+///////////////////////////////////////////////////////////////////
+// 排行
+///////////////////////////////////////////////////////////////////
+message hall_get_score_rank {
+	// req
+	// rep
+	required score_rank self;
+	repeated score_rank ranks;
+}
+
+message hall_get_gold_rank {
+	// req
+	// rep
+	required gold_rank self;
+	repeated gold_rank ranks;
+}
+
+message hall_set_rank_content {
+	// req
+	required string content;
+	// rep
+	required int32 err;
+}
+
+///////////////////////////////////////////////////////////////////
+// 免费金币
+///////////////////////////////////////////////////////////////////
+message hall_get_free_gold {
+	// req
+	required int32 type;
+}
+
+///////////////////////////////////////////////////////////////////
+// 公告
+///////////////////////////////////////////////////////////////////
+message hall_get_notice {
+	// req
+	// rep
+	repeated notice notices;
+}
+
+///////////////////////////////////////////////////////////////////
+// 兑换商城
+///////////////////////////////////////////////////////////////////
+message hall_get_exchange_goods {
+	// req
+	// rep
+	repeated exchange_goods info; 
+}
+
+message hall_get_exchange_record {
+	// req
+	// rep
+	repeated exchange_record info;	
+}
+
+message hall_get_exchange_info {
+	// req
+	// rep
+	required exchange_info info;
+}
+
+message hall_set_exchange_info {
+	// req
+	required exchange_info info;
+	// rep
+	required int32 err;
+}
+
+message hall_exchange {
+	// req
+	required int32 type;
+	// rep
+	required int32 err;
+}
+
+///////////////////////////////////////////////////////////////////
+// 大厅事件
+///////////////////////////////////////////////////////////////////
+message hall_event {
+	repeated ev_match_info ev_match_info; 		// 匹配界面信息
+	optional ev_match_ok ev_match_ok;			// 匹配成功 进入房间
+	repeated ev_res ev_res;						// 资源变化
+	repeated global_chat chats; 				// 聊天
+	repeated exchange_goods exchange_goods;		// 兑换商城 商品刷新
+}

@@ -1,0 +1,5 @@
+IDJSONSTRING,生命值,攻击cd,攻击范围,攻击力,攻击数量,阻挡范围,预制,技能,创建cd
+index,int,int,int,int,int,int,string,int,int
+Id,Hp,AttackCd,AttackRange,AttackDamage,AttackNum,BlockRange,Prefab,SkillId,CreateCd
+1001,100,3,0,10,1,2,Elongata,4001,4
+1002,100,4,0,10,0,2,plant,4003,3

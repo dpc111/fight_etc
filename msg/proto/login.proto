@@ -1,0 +1,22 @@
+///////////////////////////////////////////////////////////////////
+// http 登录
+///////////////////////////////////////////////////////////////////
+// req
+message login {
+	required string platform;  			// weixin, browser
+
+	optional string code;				// weixin
+	optional string nickname;
+	optional string headimgurl;
+
+	optional string uname;				// browser
+	optional string pwd;
+}
+// rep
+message login {
+	required int32 err;
+	optional int32 uid;
+	optional string addr; 				// 网关地址
+	optional string session; 			// 链接网关发往网关 用于登录校验
+}
+

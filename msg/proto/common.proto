@@ -1,0 +1,240 @@
+//////////////////////////////////////////////////////////////////
+// 错误码
+//////////////////////////////////////////////////////////////////
+message tip {
+	optional int32 err;
+}
+
+message broadcast {
+	required int32 type;
+	repeated string params;
+}
+
+//////////////////////////////////////////////////////////////////
+// 数据
+//////////////////////////////////////////////////////////////////
+message player_info {
+	required int32 uid;
+	required string nickname;
+	required string headimgurl;
+	required int32 grade;
+	required int32 stage; 
+
+	required int32 seat;
+	required int32 score;
+	required int32 morale;
+	required int32 cont_hit;
+
+	repeated item items;
+
+	optional int32 endlessscoremaxday;		// 无尽当然最高纪录
+}
+
+message room_state {
+	required int32 state;
+	optional int32 cd;
+}
+
+message room_info {
+	required int32 room_type;
+	optional int32 stage;
+}
+
+message item {
+	required int32 itemid; 					// 道具id
+	required int32 num; 					// 道具数
+}
+
+message hole {
+	required int32 id; 						// 洞口id
+	required int32 state; 					// 状态
+}
+
+message mouse {
+	required int32 id; 						// 地鼠id = 洞口id
+	required int32 type_id; 				// 地鼠类型
+}
+
+message stage_result {
+	// 关卡模式
+	required int32 win; 					// 0 失败 1 成功
+	required int32 star;					// 星
+	required int32 score; 					// 分数
+	repeated item items; 					// 奖励
+	// 竞技模式
+	required int32 uid; 					// 玩家id
+	required int32 win; 					// 0 失败 1 成功
+	required int32 score; 					// 分数
+	repeated item items; 					// 奖励
+	// 无尽模式
+	required int32 score;					// 本局得分
+	required int32 endlessscoremax;			// 历史最高纪录
+	required int32 endlessscoremaxday; 		// 当天最高分数
+	required int32 new; 					// 0 不是记录 1 是新记录
+	// 砸金蛋
+	required int32 get_gold;  				// 获得金币数
+}
+
+//////////////////////////////////////////////////////////////////
+// 事件
+//////////////////////////////////////////////////////////////////
+message ev_use_item {
+	required int32 uid; 					// 使用者id
+	required int32 itemid; 					// 道具id
+	required int32 target; 					// 作用对象 (根据道具id决定作用对象)
+}
+
+message ev_mouse {
+	required int32 ev_type; 				// ev_mouse*
+	required int32 id; 						// 地鼠 洞口id
+	required int32 type_id; 				// 地鼠类型
+	required int32 blood; 					// 当前血量
+}
+
+message ev_buff {
+	required int32 type_id; 				// buff类型
+	required int32 life; 					// 生命周期
+	required int32 target; 					// 作用对象
+}
+
+message ev_item {
+	required int32 uid;
+	required int32 itemid; 					// 道具id
+	required int32 change; 					// 道具增量
+	required int32 cur; 					// 道具当前值
+}
+
+message ev_game_data {
+	required int32 uid;
+	optional int32 score; 					// 分数 					
+	optional int32 morale; 					// 士气
+	optional int32 cont_hit; 				// 连击数
+}
+
+message ev_drop_item {
+	required int32 uid;						// 获得道具玩家
+	required int32 id;						// 地鼠 洞口id
+	required int32 itemid; 					// 道具id
+	required int32 num;						// 道具数量
+}
+
+//////////////////////////////////////////////////////////////////
+// 大厅数据
+//////////////////////////////////////////////////////////////////
+message user_info {
+	required int32 uid;
+	required string nickname;
+	required string headimgurl;
+	optional int32 sex;
+	optional string addr;
+	optional int32 vip;
+	optional int32 rmb;
+	optional string sign;
+	optional int32 grade;
+	optional int32 stage; 
+}
+
+message email {
+	required int32 type;					// const.email_type_
+	required int64 time;					// 发送时间
+	required int32 content;					// 类容
+	required int32 readflag;				// 0 未读 1 已读
+	required int32 getflag;					// 0 未领 1 已领
+	repeated item items;					// 可领取道具
+
+	optional int32 uid;
+	optional string headimgurl;
+	optional string nickname;
+	optional int32 star;
+}
+
+message global_chat {
+	required int32 uid;
+	required string	headimgurl;
+	required string nickname;
+	required int32 sex;
+	required string addr;
+	required int32 vip;
+	required int32 star;
+	required string content;
+	required int64 time;
+}
+
+message friend {
+	required int32 uid;
+	required string	headimgurl;
+	required string nickname;
+	required int32 vip;
+	required int32 star;
+	required int32 onlineflag;				// 0 不在线 1 在线
+	required int32 offlinetime;				// 上次离线时间
+}
+
+message match_record {
+	required int32 uid;
+	required string	headimgurl;
+	required string nickname;
+	required int32 vip;
+	required int32 star;
+}
+
+message score_rank {
+	required int32 uid;
+	required string	headimgurl;
+	required string nickname;
+	required int32 score; 
+}
+
+message gold_rank {
+	required int32 uid;
+	required string	headimgurl;
+	required string nickname;
+	required int32 gold;
+	required int32 yuanbao;
+	required int32 diamond;
+	required string content;
+}
+
+message notice {
+	required string title;
+	required string content;
+}
+
+message exchange_goods {
+	required int32 type;					// 配置id (exchange.csv)
+	required int32 num;						// 剩余张数 (nil 无限)	
+	required int32 cd;						// 倒计时/秒 (nil 没有倒计时)
+}
+
+message exchange_record {
+	required int32 type;					// 配置id (exchange.csv)				
+	required int64 time;					// 兑换时间
+	required int32 state;					// 状态
+}
+
+message exchange_info {
+	required string name;					// 姓名
+	required string wx;						// 微信号
+	required string tel;					// 手机号
+	required string addr;					// 详细地址
+}
+
+//////////////////////////////////////////////////////////////////
+// 大厅事件
+//////////////////////////////////////////////////////////////////
+message ev_match_info {
+	required int32 stage;
+	required int32 uid;
+	required int32 nickname;
+	required int32 headimgurl;
+}
+
+message ev_match_ok {
+	required int32 sid = 1;
+}
+
+message ev_res {
+	required int32 itemid; 					// 道具id
+	required int32 change; 					// 道具增量
+	required int32 cur; 					// 道具当前值
+}

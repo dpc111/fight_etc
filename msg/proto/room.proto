@@ -1,0 +1,55 @@
+///////////////////////////////////////////////////////////////////
+// 进入房间
+///////////////////////////////////////////////////////////////////
+message room_join {
+	//req
+	optional int32 stage;
+	//rep
+	required int32 err;
+}
+
+message room_player_op {
+	//req
+	optional int32 player_op_type; 					// const.room_player_op_type
+	//rep
+	optional int32 err;
+}
+
+///////////////////////////////////////////////////////////////////
+// 查询房间信息
+///////////////////////////////////////////////////////////////////
+message room_get_info {
+	//req
+	//rep
+	required int32 err;
+	required room_state room_state;
+	required room_info room_info;
+	repeated player_info player_infos;
+	repeated hole holes;
+	repeated mouse mouses;
+}
+
+///////////////////////////////////////////////////////////////////
+// 使用道具
+///////////////////////////////////////////////////////////////////
+message room_use_item {
+	//req
+	required int32 itemid; 			// 道具id
+	optional int32 target; 			// 目标对象id 
+}
+
+///////////////////////////////////////////////////////////////////
+// 事件
+///////////////////////////////////////////////////////////////////
+message room_event {
+	//rep
+	repeated room_state ev_room_state;				// 房间状态
+	repeated ev_use_item ev_use_item;				// 使用道具
+	repeated ev_mouse ev_mouse; 					// 地鼠事件
+	repeated ev_buff ev_buff;						// buff创建
+	repeated ev_buff ev_buff_del;					// buff删除
+	repeated ev_item ev_item;						// 玩家道具变化
+	repeated ev_game_data ev_game_data;				// 玩家数据变化
+	repeated ev_drop_item ev_drop_item;				// 道具掉落,用于表现,不修改客户端背包数据
+	repeated stage_result ev_stage_result; 			// 关卡结算
+}

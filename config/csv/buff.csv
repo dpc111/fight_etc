@@ -1,0 +1,7 @@
+IDJSONSTRING,内型,时间,冷却,乘作用,加作用,cd加作用,表现效果
+index,int,int,int,table,table,table,string
+id,type,time,cd,mul_effect,add_effect,add_effect_cd,res_buff
+1001,1,10,2,1*2,,,buff_fire
+1002,2,20,2,,1*2,,buff_fire
+1003,3,30,2,,,1*2,buff_fire
+1004,4,1,2,,,1*2,buff_fire
