@@ -3,3 +3,4 @@ index,int,int,int,int,int,int,string,int,int
 Id,Hp,AttackCd,AttackRange,AttackDamage,AttackNum,BlockRange,Prefab,SkillId,CreateCd
 1001,100,3,0,10,1,2,Elongata,4001,4
 1002,100,4,0,10,0,2,plant,4003,3
+1003,100,6,0,20,0,5,minigolem,4004,3

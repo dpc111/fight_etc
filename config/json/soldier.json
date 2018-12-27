@@ -16,7 +16,7 @@
       "2002" : {
          "Id" : "2002",
          "Type" : 1,
-         "Hp" : 30,
+         "Hp" : 40,
          "AttackCd" : 1,
          "AttackRange" : 5,
          "AttackDamage" : 10,

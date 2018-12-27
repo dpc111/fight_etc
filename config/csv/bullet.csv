@@ -3,4 +3,4 @@ index,int,int,int,int,int,int,int,int,string
 Id,Type,AttackRange,MoveType,CheckHitType,CheckHitCamp,CheckHitUnitType,HitDestroy,MoveSpeed,Prefab
 3001,2,0,1,3,2,4,1,10,Bullet
 3002,1,0,2,2,2,4,1,15,Bullet
-3003,1,5,2,2,2,4,1,15,Bullet
+3003,2,8,2,3,2,4,0,6,Bullet3003

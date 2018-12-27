@@ -4,3 +4,4 @@ Id,Type,SkillTargetGroup,CampGroupType,UnitType,SkillRangeType,MoveType,BulletId
 4001,1,1,2,4,3,2,3001,0
 4002,1,2,2,4,2,1,3002,0
 4003,2,1,0,0,3,1,0,2002
+4004,1,1,2,4,3,1,3003,0
